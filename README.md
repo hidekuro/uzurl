@@ -7,4 +7,4 @@ uzurl (うずーる) は、コーディングチャレンジ題材として開�
 
 ## License
 
-[MIT license](https://opensource.org/licenses/MIT).
+[MIT license](LICENSE).
