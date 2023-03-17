@@ -1,18 +1,13 @@
 # uzurl
 
-## About
+uzurl (うずーる) は、コーディングチャレンジ題材として開発した URL 短縮 Web アプリケーションです。
 
-uzurl (うずーる) は、コーディングチャレンジ題材として開発した URL 短縮サービスの Web アプリケーションです。
+`uzurl` とは、作者の愛猫の名前 "うず" と "URL" をあわせた造語です。
 
-プロダクト名の `uzurl` は、開発者の愛猫の名前 "うず" と "URL" をあわせた造語です。
+## Core concept
 
-## Concept
-
-> Focus on **_Process_**, **_Reason_**, and **_Prospects_**, rather than the actual thing.
-
+アプリケーションの機能面のテーマは、 [TinyURL.com](https://tinyurl.com/) の簡易クローンです。  
 直近の成果物よりも、過程・理由・展望の3点を重視して開発されています。
-
-アプリケーションの機能面のテーマは、 [TinyURL.com](https://tinyurl.com/) の簡易クローンです。
 
 ### What you can : できること
 
