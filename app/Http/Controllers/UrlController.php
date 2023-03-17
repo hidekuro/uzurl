@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UrlShortenRequest;
+use App\Models\Url;
 use Illuminate\Http\Request;
 
 class UrlController extends Controller
@@ -11,9 +13,14 @@ class UrlController extends Controller
         // TODO URL短縮画面を表示
     }
 
-    public function shorten()
+    public function shorten(UrlShortenRequest $request)
     {
-        // TODO Urlモデルを保存して短縮URLをレスポンス
+        $url = new Url($request->validated());
+        $url->saveOrFail();
+
+        return response()->view('index', [
+            'short_url' => $url->shortUrl(),
+        ]);
     }
 
     public function expand()
