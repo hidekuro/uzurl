@@ -17,4 +17,8 @@ class Url extends Model
         parent::__construct($attributes);
         $this->uid = (new Nanoid)->generateId($size = 10);
     }
+
+    public function shortUrl() {
+        return url("/{$this->uid}");
+    }
 }
