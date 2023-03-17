@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class UrlController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         // TODO URL短縮画面を表示
     }
 
