@@ -22,7 +22,7 @@ class UrlShortenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url' => 'required|max:2000|url'
+            'url' => 'required|max:2000|url',
         ];
     }
 }

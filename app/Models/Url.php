@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
 use Hidehalo\Nanoid\Client as Nanoid;
+use Illuminate\Database\Eloquent\Model;
 
 class Url extends Model
 {
@@ -18,7 +17,8 @@ class Url extends Model
         $this->uid = (new Nanoid)->generateId($size = 10);
     }
 
-    public function shortUrl() {
+    public function shortUrl()
+    {
         return url("/{$this->uid}");
     }
 }
