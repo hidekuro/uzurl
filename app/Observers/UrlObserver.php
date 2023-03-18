@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Log;
 class UrlObserver
 {
     /**
+     * Handle the Url "retrieved" event.
+     */
+    public function retrieved(Url $url): void
+    {
+        Log::info('Incoming short url access resolved.', $url->toArray());
+    }
+
+    /**
      * Handle the Url "created" event.
      */
     public function created(Url $url): void
     {
-        Log::info("New URL has created.", $url->toArray());
+        Log::info('New URL has created.', $url->toArray());
     }
 
     /**

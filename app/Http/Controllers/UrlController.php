@@ -10,7 +10,7 @@ class UrlController extends Controller
 {
     public function index()
     {
-        // TODO URL短縮画面を表示
+        return response()->view('index');
     }
 
     public function shorten(UrlShortenRequest $request)
@@ -18,7 +18,9 @@ class UrlController extends Controller
         $url = new Url($request->validated());
         $url->saveOrFail();
 
-        return response()->view('index', [
+        return redirect()
+            ->route('url.index')
+            ->with([
             'short_url' => $url->shortUrl(),
         ]);
     }
