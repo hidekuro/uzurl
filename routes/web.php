@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UrlController::class, 'index']);
 
-Route::get('/{url:uid}', [UrlController::class, 'expand']);
+Route::post('/shorten', [UrlController::class, 'shorten']);
 
+Route::get('/{url:uid}', [UrlController::class, 'expand']);
