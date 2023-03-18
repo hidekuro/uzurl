@@ -63,6 +63,13 @@ services:
         - ping
       retries: 3
       timeout: 5s
+  adminer:
+    image: 'adminer:4-standalone'
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - sail
 networks:
   sail:
     driver: bridge
