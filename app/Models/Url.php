@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Hidehalo\Nanoid\Client as Nanoid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Url extends Model
 {
+    use Notifiable;
+
     protected $fillable = [
         'url',
     ];
