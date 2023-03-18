@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UrlController::class, 'index']);
-
-Route::post('/shorten', [UrlController::class, 'shorten']);
-
-Route::get('/{url:uid}', [UrlController::class, 'expand']);
+Route::name('url.')
+    ->controller(UrlController::class)
+    ->group(function () {
+        Route::name('index')->get('/', 'index');
+        Route::name('shorten')->post('/shorten', 'shorten');
+        Route::name('expand')->get('/{url:uid}', 'expand');
+    });
