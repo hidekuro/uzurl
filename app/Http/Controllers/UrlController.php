@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UrlShortenRequest;
 use App\Models\Url;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UrlController extends Controller
 {
@@ -21,12 +21,13 @@ class UrlController extends Controller
         return redirect()
             ->route('url.index')
             ->with([
-            'short_url' => $url->shortUrl(),
-        ]);
+                'short_url' => $url->shortUrl(),
+            ]);
     }
 
-    public function expand()
+    public function expand(Url $url)
     {
-        // TODO Urlモデルを取得してオリジナルURLにリダイレクト
+        // 互換性を考慮して308ではなく301リダイレクト
+        return redirect($url->url, Response::HTTP_MOVED_PERMANENTLY);
     }
 }
