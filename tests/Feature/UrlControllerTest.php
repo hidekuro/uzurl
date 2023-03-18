@@ -3,9 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Url;
+use Hidehalo\Nanoid\Client as NanoidClient;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 use Mockery\MockInterface;
+use Tests\TestCase;
 
 class UrlControllerTest extends TestCase
 {
@@ -36,14 +37,12 @@ class UrlControllerTest extends TestCase
         $this->assertDatabaseMissing('urls', ['url' => 'invalid-value-as-url']);
     }
 
-    // FIXME: NanoidClientのgenerateIdか、Urlモデルのuid属性取得をモック化したいが、モックにできておらず失敗する。
     public function test_500_when_uid_collision(): void
     {
         // 生成するUIDが常に 'abcde12345' となるようにモック化
-        $this->mock(Url::class, function (MockInterface $mock) {
-            $mock->shouldReceive('getAttribute')
-                ->once()
-                ->with('uid')
+        $this->mock(NanoidClient::class, function (MockInterface $mock) {
+            $mock->shouldReceive('generateId')
+                ->withNoArgs()
                 ->andReturn('abcde12345');
         });
 
