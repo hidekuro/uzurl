@@ -4,6 +4,30 @@ uzurl (うずーる) は、コーディングチャレンジ題材として開�
 
 `uzurl` とは、作者の愛猫の名前 "うず" と "URL" をあわせた造語です。
 
+## Prerequisite
+
+- [Docker Desktop](https://docs.docker.com/desktop/)
+
+uzurl は [Laravel Sail](https://laravel.com/docs/10.x/sail) で開発されています。
+Windows の場合、 WSL2 based Docker Desktop が必要です。
+
+## Getting Started
+
+```bash
+git clone git@github.com:hidekuro/uzurl.git
+cd uzurl/
+
+docker run --rm \
+    --pull=always \
+    -v "$(pwd)":/opt/app \
+    -w /opt/app \
+    -u "$(id -u):$(id -g)"
+    laravelsail/php82-composer:latest \
+    bash -c "composer install"
+
+./vendor/bin/sail up
+```
+
 ## Core concept
 
 題材の指定による技術的なテーマは **「サーバーサイド技術による [TinyURL.com](https://tinyurl.com/) の簡易クローン」** です。
