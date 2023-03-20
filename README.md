@@ -26,6 +26,7 @@ docker run --rm \
     bash -c "composer install"
 
 ./vendor/bin/sail up
+./vendor/bin/sail migrate
 ```
 
 ## Core concept
