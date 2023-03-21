@@ -17,17 +17,28 @@ Windows の場合、 WSL2 based Docker Desktop が必要です。
 git clone git@github.com:hidekuro/uzurl.git
 cd uzurl/
 
+cp .env.example .env
+
 docker run --rm \
     --pull=always \
     -v "$(pwd)":/opt/app \
     -w /opt/app \
-    -u "$(id -u):$(id -g)"
+    -u "$(id -u):$(id -g)" \
     laravelsail/php82-composer:latest \
     bash -c "composer install"
 
-./vendor/bin/sail up
-./vendor/bin/sail migrate
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan key:generate
+
+# mysql サービスが healthy になってから実行
+./vendor/bin/sail artisan migrate
 ```
+
+| ローカル URL | service
+|---|---|
+| <http://localhost> | uzurl アプリケーション本体 |
+| <http://localhost:8080> | Adminer (MySQL 管理ツール) |
+| <http://localhost:8081> | Redis Commander (Redis 管理ツール) |
 
 ## Core concept
 
